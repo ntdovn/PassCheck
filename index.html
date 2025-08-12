@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassCheck - Kiểm tra & Tạo mật khẩu mạnh</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233B82F6'><path d='M12 2.5L2 7l10 4.5 10-4.5L12 2.5zM2 17l10 4.5L22 17M2 12l10 4.5L22 12' stroke='%233B82F6' stroke-width='1.5' fill='none'/><circle cx='12' cy='12' r='2' fill='%233B82F6'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="particles-container" id="particlesContainer"></div>
+    
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>PassCheck</span>
+            </a>
+            <div class="header-subtitle">Bảo mật mật khẩu thông minh & hiện đại</div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="page-title">
+            <h1>Kiểm tra & Tạo mật khẩu mạnh</h1>
+            <p>Giải pháp bảo mật toàn diện với thuật toán tiên tiến</p>
+        </div>
+
+        <div class="content-grid">
+            <!-- Main Password Checker - Hero Section -->
+            <div class="card hero-card">
+                <div class="card-header">
+                    <i class="fas fa-search"></i>
+                    <h2>Kiểm tra độ mạnh mật khẩu</h2>
+                </div>
+                <div class="card-content">
+                    <div class="password-input-group">
+                        <div class="input-wrapper">
+                            <input type="password" id="passwordInput" placeholder="Nhập mật khẩu cần kiểm tra...">
+                            <button type="button" id="togglePassword" class="toggle-password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="strength-meter">
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                        <div class="strength-info">
+                            <span class="strength-text" id="strengthText">Độ mạnh mật khẩu</span>
+                            <span class="strength-score" id="strengthScore">0/100</span>
+                        </div>
+                    </div>
+
+                    <div class="analysis-grid" id="analysisGrid">
+                        <div class="analysis-item" id="lengthIcon">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Độ dài</span>
+                        </div>
+                        <div class="analysis-item" id="uppercaseIcon">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Chữ hoa</span>
+                        </div>
+                        <div class="analysis-item" id="lowercaseIcon">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Chữ thường</span>
+                        </div>
+                        <div class="analysis-item" id="numbersIcon">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Số</span>
+                        </div>
+                        <div class="analysis-item" id="symbolsIcon">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Ký tự đặc biệt</span>
+                        </div>
+                        <div class="analysis-item" id="patternIcon">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Mẫu dễ đoán</span>
+                        </div>
+                        <div class="analysis-item" id="entropyIcon">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Entropy</span>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button id="checkBreachBtn" class="btn btn-primary">
+                            <i class="fas fa-search"></i> Kiểm tra rò rỉ
+                        </button>
+                    </div>
+
+                    <div class="breach-result" id="breachResult" style="display: none;">
+                        <div class="breach-status" id="breachStatus"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suggestions Card -->
+            <div class="card suggestions-card">
+                <div class="card-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h2>Gợi ý cải thiện</h2>
+                </div>
+                <div class="card-content">
+                    <div id="suggestionsList">
+                        <p class="placeholder-text">Nhập mật khẩu để nhận gợi ý</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memorable Password Generator -->
+            <div class="card generator-card memorable-card">
+                <div class="card-header">
+                    <i class="fas fa-brain"></i>
+                    <h2>Tạo mật khẩu dễ nhớ</h2>
+                </div>
+                <div class="card-content">
+                    <div class="input-group">
+                        <input type="text" id="memorableInput" placeholder="Nhập từ khóa (tên, sở thích, v.v.)">
+                        <button id="generateMemorable" class="btn btn-secondary">
+                            <i class="fas fa-magic"></i> Tạo
+                        </button>
+                    </div>
+                    <div class="suggestions-container">
+                        <div id="suggestionCards"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Random Password Generator -->
+            <div class="card generator-card random-card">
+                <div class="card-header">
+                    <i class="fas fa-random"></i>
+                    <h2>Tạo mật khẩu ngẫu nhiên</h2>
+                </div>
+                <div class="card-content">
+                    <div class="length-control">
+                        <label for="passwordLength">Độ dài: <span id="lengthValue">12</span></label>
+                        <input type="range" id="passwordLength" min="8" max="32" value="12">
+                    </div>
+                    
+                    <button id="generateBtn" class="btn btn-primary">
+                        <i class="fas fa-dice"></i> Tạo mật khẩu
+                    </button>
+                    
+                    <div class="generated-password-container">
+                        <div id="generatedPassword" class="generated-password" style="display: none;"></div>
+                        <div id="passwordStrengthInfo" class="password-strength-info" style="display: none;">
+                            <div class="strength-indicator-small">
+                                <div id="generatedStrengthDot" class="strength-dot-small"></div>
+                                <span id="generatedStrengthText"></span>
+                            </div>
+                            <span id="generatedStrengthScore" class="strength-score-small"></span>
+                        </div>
+                        <button id="copyBtn" class="btn btn-outline" style="display: none;">
+                            <i class="fas fa-copy"></i> Sao chép
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Tips Card -->
+            <div class="card tips-card">
+                <div class="card-header">
+                    <i class="fas fa-shield-alt"></i>
+                    <h2>Mẹo bảo mật</h2>
+                </div>
+                <div class="card-content">
+                    <div class="tips-list">
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Sử dụng mật khẩu dài ít nhất 12 ký tự</span>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Kết hợp chữ hoa, chữ thường, số và ký tự đặc biệt</span>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Tránh thông tin cá nhân dễ đoán</span>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Không sử dụng cùng một mật khẩu cho nhiều tài khoản</span>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Thay đổi mật khẩu định kỳ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Card -->
+            <div class="card stats-card">
+                <div class="card-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h2>Thống kê rò rỉ dữ liệu thực tế</h2>
+                </div>
+                <div class="card-content">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">5,000+</div>
+                            <div class="stat-label">Vụ rò rỉ dữ liệu lớn</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15.5B+</div>
+                            <div class="stat-label">Tài khoản bị ảnh hưởng</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1.03B+</div>
+                            <div class="stat-label">Lần sử dụng "123456"</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">360M+</div>
+                            <div class="stat-label">Lần sử dụng "password"</div>
+                        </div>
+                    </div>
+                    
+                    <div class="breach-statistics">
+                        <h4>Top 5 vụ rò rỉ lớn nhất</h4>
+                        <div class="stat-item">
+                            <span class="stat-label">Yahoo (2013)</span>
+                            <span class="stat-value">3B tài khoản</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Facebook (2019)</span>
+                            <span class="stat-value">533M tài khoản</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Marriott (2018)</span>
+                            <span class="stat-value">500M tài khoản</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Adobe (2013)</span>
+                            <span class="stat-value">153M tài khoản</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">LinkedIn (2012)</span>
+                            <span class="stat-value">117M tài khoản</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>&copy; 2024 <strong>Carter Fill</strong>. Tất cả quyền được bảo lưu.</p>
+                <p class="footer-subtitle">PassCheck - Giải pháp bảo mật mật khẩu thông minh</p>
+            </div>
+            <div class="footer-links">
+                <a href="http://carterfill.publicvm.com/" target="_blank" class="footer-link">Liên hệ</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
