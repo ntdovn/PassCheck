@@ -5,6 +5,9 @@
 > **Tác giả:** Carter Fill  
 > **Bản quyền:** © 2025 Carter Fill. All rights reserved.
 
+## 🌐 Live Demo
+**🔗 https://passcheck.carterfill.me**
+
 ## ✨ Tính năng
 
 ### 🛡️ Kiểm tra độ mạnh mật khẩu
@@ -46,11 +49,13 @@
 
 ## 🚀 Deployment
 
-### Deploy Production (Khuyến nghị)
-- **Frontend**: Deploy lên Vercel
-- **Backend**: Deploy lên Railway
+### Production Setup
+- **Frontend**: Vercel → `https://passcheck.carterfill.me`
+- **Backend**: Railway → API Server
 
-📖 **Xem hướng dẫn chi tiết tại [DEPLOYMENT.md](./DEPLOYMENT.md)**
+### Deploy Your Own
+📖 **Hướng dẫn chi tiết:** [DEPLOYMENT.md](./DEPLOYMENT.md)  
+⚡ **Hướng dẫn nhanh:** [QUICK-DEPLOY.md](./QUICK-DEPLOY.md)
 
 ---
 
