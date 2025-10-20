@@ -47,15 +47,11 @@
 - **Lucide React** - Icons
 - **React Hot Toast** - Notifications
 
-## 🚀 Deployment
+## 🚀 Production Deployment
 
-### Production Setup
 - **Frontend**: Vercel → `https://passcheck.carterfill.me`
-- **Backend**: Railway → API Server
-
-### Deploy Your Own
-📖 **Hướng dẫn chi tiết:** [DEPLOYMENT.md](./DEPLOYMENT.md)  
-⚡ **Hướng dẫn nhanh:** [QUICK-DEPLOY.md](./QUICK-DEPLOY.md)
+- **Backend**: Railway → `https://passcheck-production.up.railway.app`
+- **Status**: ✅ Live and Running
 
 ---
 
@@ -212,15 +208,17 @@ npm run preview
 ### Backend (.env)
 ```env
 PORT=3001
-NODE_ENV=production
+NODE_ENV=development
 CORS_ORIGIN=http://localhost:5173
-WORDLIST_PATH=../data/wordlists
+WORDLIST_PATH=./data/wordlists
 ```
 
-### Frontend (.env)
+### Frontend (.env.local)
 ```env
 VITE_API_URL=http://localhost:3001/api
 ```
+
+**Note**: Production environment variables được cấu hình trực tiếp trên Railway và Vercel.
 
 ## 🤝 Đóng góp
 
