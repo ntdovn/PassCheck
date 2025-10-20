@@ -29,7 +29,13 @@ Vào Settings → Environment Variables và thêm:
 PORT=3001
 NODE_ENV=production
 CORS_ORIGIN=https://your-frontend-domain.vercel.app
+WORDLIST_PATH=./data/wordlists
 ```
+
+**⚠️ Lưu ý về Data Folder:**
+- Thư mục `backend/data/` (~110MB) chứa wordlists cho breach checking
+- Railway tự động deploy cùng với backend
+- Không cần upload riêng
 
 ### Bước 4: Lấy Backend URL
 - Sau khi deploy xong, Railway sẽ cung cấp URL

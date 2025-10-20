@@ -41,6 +41,7 @@ npm start
 | PORT | Server port | 3001 |
 | NODE_ENV | Environment | production |
 | CORS_ORIGIN | Allowed frontend origins (comma-separated) | https://app.vercel.app,https://app2.vercel.app |
+| WORDLIST_PATH | Path to wordlists folder | ./data/wordlists |
 
 ## 🔌 API Endpoints
 
@@ -76,11 +77,16 @@ backend/
 │   ├── controllers/
 │   ├── routes/
 │   └── types/
+├── data/
+│   ├── wordlists/
+│   └── statistical-lists/
 ├── package.json
 ├── tsconfig.json
 ├── railway.json
 └── Procfile
 ```
+
+**Note**: Thư mục `data/` chứa wordlists cho chức năng kiểm tra mật khẩu phổ biến. Kích thước ~110MB, đã được bao gồm trong deployment.
 
 ## 🔧 Railway Configuration
 
