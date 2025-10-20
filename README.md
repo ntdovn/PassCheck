@@ -44,7 +44,17 @@
 - **Lucide React** - Icons
 - **React Hot Toast** - Notifications
 
-## 🚀 Cài đặt và chạy
+## 🚀 Deployment
+
+### Deploy Production (Khuyến nghị)
+- **Frontend**: Deploy lên Vercel
+- **Backend**: Deploy lên Railway
+
+📖 **Xem hướng dẫn chi tiết tại [DEPLOYMENT.md](./DEPLOYMENT.md)**
+
+---
+
+## 💻 Local Development
 
 ### Yêu cầu
 - Node.js >= 18.x
@@ -75,7 +85,9 @@ cd ../frontend
 npm install
 
 # Copy file env
-cp .env.example .env
+cp .env.example .env.local
+
+# Update VITE_API_URL nếu cần
 ```
 
 ### 4. Chạy ứng dụng

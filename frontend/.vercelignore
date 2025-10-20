@@ -1,0 +1,17 @@
+# Environment variables
+.env.local
+.env.production
+
+# Node modules
+node_modules
+
+# Build files
+dist
+.vercel
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
