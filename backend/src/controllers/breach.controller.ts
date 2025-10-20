@@ -72,7 +72,7 @@ export const checkCommonPassword = async (req: Request, res: Response) => {
     const lowerPassword = password.toLowerCase();
     
     // Check against local wordlists
-    const wordlistPath = process.env.WORDLIST_PATH || './data/wordlists';
+    const wordlistPath = process.env.WORDLIST_PATH || '../data/wordlists';
     const wordlistFiles = [
       'ignis-1K.txt',
       'ignis-10K.txt'

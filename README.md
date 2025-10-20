@@ -5,9 +5,6 @@
 > **Tác giả:** Carter Fill  
 > **Bản quyền:** © 2025 Carter Fill. All rights reserved.
 
-## 🌐 Live Demo
-**🔗 https://passcheck.carterfill.me**
-
 ## ✨ Tính năng
 
 ### 🛡️ Kiểm tra độ mạnh mật khẩu
@@ -47,15 +44,7 @@
 - **Lucide React** - Icons
 - **React Hot Toast** - Notifications
 
-## 🚀 Production Deployment
-
-- **Frontend**: Vercel → `https://passcheck.carterfill.me`
-- **Backend**: Railway → `https://passcheck-production.up.railway.app`
-- **Status**: ✅ Live and Running
-
----
-
-## 💻 Local Development
+## 🚀 Cài đặt và chạy
 
 ### Yêu cầu
 - Node.js >= 18.x
@@ -86,9 +75,7 @@ cd ../frontend
 npm install
 
 # Copy file env
-cp .env.example .env.local
-
-# Update VITE_API_URL nếu cần
+cp .env.example .env
 ```
 
 ### 4. Chạy ứng dụng
@@ -208,17 +195,15 @@ npm run preview
 ### Backend (.env)
 ```env
 PORT=3001
-NODE_ENV=development
+NODE_ENV=production
 CORS_ORIGIN=http://localhost:5173
-WORDLIST_PATH=./data/wordlists
+WORDLIST_PATH=../data/wordlists
 ```
 
-### Frontend (.env.local)
+### Frontend (.env)
 ```env
 VITE_API_URL=http://localhost:3001/api
 ```
-
-**Note**: Production environment variables được cấu hình trực tiếp trên Railway và Vercel.
 
 ## 🤝 Đóng góp
 

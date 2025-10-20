@@ -3,10 +3,7 @@ import zxcvbn from 'zxcvbn';
 import { PasswordAnalysis } from '../types';
 
 // Translate time strings to Vietnamese
-function translateTime(timeStr: string | number): string {
-  // Convert number to string if needed
-  const timeString = typeof timeStr === 'number' ? timeStr.toString() : timeStr;
-  
+function translateTime(timeStr: string): string {
   const translations: { [key: string]: string } = {
     'less than a second': 'dưới 1 giây',
     'second': 'giây',
@@ -24,7 +21,7 @@ function translateTime(timeStr: string | number): string {
     'centuries': 'thế kỷ'
   };
 
-  let translated = timeString;
+  let translated = timeStr;
   for (const [eng, vie] of Object.entries(translations)) {
     translated = translated.replace(new RegExp(eng, 'gi'), vie);
   }

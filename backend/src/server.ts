@@ -14,35 +14,8 @@ const PORT = process.env.PORT || 3001;
 
 // Security middleware
 app.use(helmet());
-
-// CORS configuration - support multiple origins
-const allowedOrigins = process.env.CORS_ORIGIN 
-  ? process.env.CORS_ORIGIN.split(',').map(origin => origin.trim())
-  : ['http://localhost:5173'];
-
-// Also allow any Vercel deployment
-const isVercelDomain = (origin: string) => {
-  return origin && (
-    origin.endsWith('.vercel.app') || 
-    origin === 'https://passcheck.carterfill.me' ||
-    origin === 'http://localhost:5173'
-  );
-};
-
 app.use(cors({
-  origin: (origin, callback) => {
-    // Allow requests with no origin (mobile apps, Postman, etc.)
-    if (!origin) return callback(null, true);
-    
-    // Check if origin is in allowed list or is Vercel domain
-    if (allowedOrigins.includes(origin) || isVercelDomain(origin)) {
-      callback(null, true);
-    } else {
-      console.log(`CORS blocked origin: ${origin}`);
-      // Still allow but log it for debugging
-      callback(null, true);
-    }
-  },
+  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
   credentials: true
 }));
 
