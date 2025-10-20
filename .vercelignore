@@ -1,0 +1,10 @@
+# API Serverless Functions for Vercel
+api/
+backend/dist/
+frontend/dist/
+backend/node_modules/
+frontend/node_modules/
+node_modules/
+.env
+.env.local
+*.log
