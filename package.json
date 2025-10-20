@@ -1,0 +1,42 @@
+{
+  "name": "passcheck",
+  "version": "1.0.0",
+  "description": "Password Security Tool - Check password strength and generate secure passwords",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "start": "concurrently \"npm run start:backend\" \"npm run preview:frontend\"",
+    "start:backend": "cd backend && npm start",
+    "preview:frontend": "cd frontend && npm run preview",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "clean": "rm -rf backend/node_modules backend/dist frontend/node_modules frontend/dist node_modules"
+  },
+  "keywords": [
+    "password",
+    "security",
+    "generator",
+    "breach-checker",
+    "password-strength"
+  ],
+  "author": "Carter Fill <carterfill@example.com> (https://carterfill.dev)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carterfill/passcheck"
+  },
+  "homepage": "https://passcheck.carterfill.dev",
+  "contributors": [
+    "Carter Fill <carterfill@example.com>"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
