@@ -233,6 +233,7 @@ MIT License - xem file LICENSE để biết thêm chi tiết
 
 - [zxcvbn](https://github.com/dropbox/zxcvbn) - Password strength estimation
 - [Have I Been Pwned](https://haveibeenpwned.com/) - Breach database
+- [Pwdb-Public](https://github.com/ignis-sec/Pwdb-Public) - Password wordlists database
 - [Lucide Icons](https://lucide.dev/) - Beautiful icons
 - [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS
 
