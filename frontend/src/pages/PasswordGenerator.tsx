@@ -10,6 +10,7 @@ const PasswordGenerator = () => {
   const [loading, setLoading] = useState(false);
   const [generatedPassword, setGeneratedPassword] = useState('');
 
+  // Random password options
   const [length, setLength] = useState(16);
   const [includeUppercase, setIncludeUppercase] = useState(true);
   const [includeLowercase, setIncludeLowercase] = useState(true);
@@ -17,12 +18,14 @@ const PasswordGenerator = () => {
   const [includeSpecial, setIncludeSpecial] = useState(true);
   const [excludeAmbiguous, setExcludeAmbiguous] = useState(false);
 
+  // Memorable password options
   const [keywords, setKeywords] = useState<string[]>(['']);
   const [separator, setSeparator] = useState('-');
   const [addNumbers, setAddNumbers] = useState(true);
   const [addSpecial, setAddSpecial] = useState(false);
   const [capitalize, setCapitalize] = useState(true);
 
+  // Passphrase options
   const [wordCount, setWordCount] = useState(4);
 
   const handleGenerateRandom = async () => {
@@ -40,6 +43,7 @@ const PasswordGenerator = () => {
       setGeneratedPassword(result.passwords[0]);
       toast.success('Đã tạo mật khẩu!');
     } catch (error) {
+      console.error('Error generating password:', error);
       toast.error('Không thể tạo mật khẩu');
     } finally {
       setLoading(false);
@@ -65,6 +69,7 @@ const PasswordGenerator = () => {
       setGeneratedPassword(result.password);
       toast.success('Đã tạo mật khẩu!');
     } catch (error) {
+      console.error('Error generating password:', error);
       toast.error('Không thể tạo mật khẩu');
     } finally {
       setLoading(false);
@@ -83,6 +88,7 @@ const PasswordGenerator = () => {
       setGeneratedPassword(result.passphrase);
       toast.success('Đã tạo passphrase!');
     } catch (error) {
+      console.error('Error generating passphrase:', error);
       toast.error('Không thể tạo passphrase');
     } finally {
       setLoading(false);

@@ -39,6 +39,7 @@ const BreachChecker = () => {
         toast.success('Mật khẩu an toàn!');
       }
     } catch (error) {
+      console.error('Error checking breach:', error);
       toast.error('Không thể kiểm tra mật khẩu');
     } finally {
       setLoading(false);

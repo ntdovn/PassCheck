@@ -21,6 +21,7 @@ const PasswordChecker = () => {
       setAnalysis(result);
       toast.success('Đã phân tích mật khẩu!');
     } catch (error) {
+      console.error('Error checking password:', error);
       toast.error('Không thể kiểm tra mật khẩu');
     } finally {
       setLoading(false);

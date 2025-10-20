@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import crypto from 'crypto';
 
+// Generate random password with customizable options
 export const generateRandomPassword = async (req: Request, res: Response) => {
   try {
     const {
@@ -36,10 +37,12 @@ export const generateRandomPassword = async (req: Request, res: Response) => {
 
     res.json({ passwords });
   } catch (error) {
+    console.error('Error generating random password:', error);
     res.status(500).json({ error: 'Failed to generate password' });
   }
 };
 
+// Generate memorable password from keywords
 export const generateMemorablePassword = async (req: Request, res: Response) => {
   try {
     const { keywords = [], separator = '-', addNumbers = true, addSpecial = false, capitalize = true } = req.body;
@@ -52,6 +55,7 @@ export const generateMemorablePassword = async (req: Request, res: Response) => 
       return res.status(400).json({ error: 'Maximum 10 keywords allowed' });
     }
 
+    // Process keywords
     let processedKeywords = keywords.map((word: string) => {
       let processed = word.trim().toLowerCase();
       
@@ -59,6 +63,7 @@ export const generateMemorablePassword = async (req: Request, res: Response) => 
         processed = processed.charAt(0).toUpperCase() + processed.slice(1);
       }
       
+      // Random character substitution for extra security
       if (Math.random() > 0.5) {
         processed = processed
           .replace(/a/g, Math.random() > 0.5 ? '@' : 'a')
@@ -73,11 +78,13 @@ export const generateMemorablePassword = async (req: Request, res: Response) => 
 
     let password = processedKeywords.join(separator);
 
+    // Add random numbers
     if (addNumbers) {
       const randomNum = Math.floor(Math.random() * 9999);
       password += separator + randomNum;
     }
 
+    // Add special characters
     if (addSpecial) {
       const specialChars = '!@#$%^&*';
       const randomSpecial = specialChars[Math.floor(Math.random() * specialChars.length)];
@@ -86,10 +93,12 @@ export const generateMemorablePassword = async (req: Request, res: Response) => 
 
     res.json({ password });
   } catch (error) {
+    console.error('Error generating memorable password:', error);
     res.status(500).json({ error: 'Failed to generate memorable password' });
   }
 };
 
+// Generate passphrase using random words
 export const generatePassphrase = async (req: Request, res: Response) => {
   try {
     const { wordCount = 4, separator = '-', addNumbers = true, capitalize = true } = req.body;
@@ -98,6 +107,7 @@ export const generatePassphrase = async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Word count must be between 3 and 10' });
     }
 
+    // Common word list for passphrases
     const commonWords = [
       'correct', 'horse', 'battery', 'staple', 'random', 'secure', 'strong', 'password',
       'mountain', 'river', 'ocean', 'forest', 'sunrise', 'sunset', 'cloud', 'storm',
@@ -130,10 +140,12 @@ export const generatePassphrase = async (req: Request, res: Response) => {
 
     res.json({ passphrase });
   } catch (error) {
+    console.error('Error generating passphrase:', error);
     res.status(500).json({ error: 'Failed to generate passphrase' });
   }
 };
 
+// Helper function to generate password
 function generatePassword(options: {
   length: number;
   includeUppercase: boolean;
@@ -164,14 +176,17 @@ function generatePassword(options: {
     charset = lowercase + numbers; // fallback
   }
 
+  // Ensure at least one character from each selected type
   if (options.includeLowercase) password += lowercase[crypto.randomInt(0, lowercase.length)];
   if (options.includeUppercase) password += uppercase[crypto.randomInt(0, uppercase.length)];
   if (options.includeNumbers) password += numbers[crypto.randomInt(0, numbers.length)];
   if (options.includeSpecial) password += special[crypto.randomInt(0, special.length)];
 
+  // Fill the rest randomly
   for (let i = password.length; i < options.length; i++) {
     password += charset[crypto.randomInt(0, charset.length)];
   }
 
+  // Shuffle the password
   return password.split('').sort(() => Math.random() - 0.5).join('');
 }

@@ -44,17 +44,7 @@
 - **Lucide React** - Icons
 - **React Hot Toast** - Notifications
 
-## 🚀 Deployment
-
-### Production
-- **Frontend**: Deploy trên [Vercel](https://vercel.com) - Chi tiết trong [DEPLOYMENT.md](./DEPLOYMENT.md)
-- **Backend**: Deploy trên [Railway](https://railway.app) - Chi tiết trong [DEPLOYMENT.md](./DEPLOYMENT.md)
-
-### Live Demo
-- 🌐 **Website**: [Coming soon]
-- 🔌 **API**: [Coming soon]
-
-## 💻 Development - Cài đặt và chạy
+## 🚀 Cài đặt và chạy
 
 ### Yêu cầu
 - Node.js >= 18.x
@@ -243,7 +233,6 @@ MIT License - xem file LICENSE để biết thêm chi tiết
 
 - [zxcvbn](https://github.com/dropbox/zxcvbn) - Password strength estimation
 - [Have I Been Pwned](https://haveibeenpwned.com/) - Breach database
-- [Pwdb-Public](https://github.com/ignis-sec/Pwdb-Public) - Password wordlists database
 - [Lucide Icons](https://lucide.dev/) - Beautiful icons
 - [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS
 

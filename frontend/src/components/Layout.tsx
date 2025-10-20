@@ -87,8 +87,14 @@ const Layout = ({ children }: LayoutProps) => {
             <p className="text-sm font-bold text-gray-700">
               © 2025 PassCheck - Created by Carter Fill
             </p>
+            <p className="text-xs mt-1 text-gray-600">
+              Công cụ kiểm tra và tạo mật khẩu an toàn
+            </p>
             <p className="text-xs mt-2 text-gray-500">
               🔐 Bảo mật thông tin của bạn là ưu tiên hàng đầu ❤️
+            </p>
+            <p className="text-xs mt-3 text-purple-600 font-medium">
+              Made with ❤️ by Carter Fill | All Rights Reserved
             </p>
           </div>
         </div>

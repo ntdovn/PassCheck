@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import zxcvbn from 'zxcvbn';
 import { PasswordAnalysis } from '../types';
 
+// Translate time strings to Vietnamese
 function translateTime(timeStr: string): string {
   const translations: { [key: string]: string } = {
     'less than a second': 'dưới 1 giây',
@@ -27,6 +28,7 @@ function translateTime(timeStr: string): string {
   return translated;
 }
 
+// Translate warning messages to Vietnamese
 function translateWarning(warning: string): string {
   const warnings: { [key: string]: string } = {
     'This is a top-10 common password': 'Đây là mật khẩu phổ biến trong top 10',
@@ -48,6 +50,7 @@ function translateWarning(warning: string): string {
   return warnings[warning] || warning;
 }
 
+// Translate suggestion messages to Vietnamese
 function translateSuggestions(suggestions: string[]): string[] {
   const suggestionMap: { [key: string]: string } = {
     'Use a few words, avoid common phrases': 'Dùng vài từ, tránh cụm từ phổ biến',
@@ -68,6 +71,7 @@ function translateSuggestions(suggestions: string[]): string[] {
   return suggestions.map(s => suggestionMap[s] || s);
 }
 
+// Check password strength using multiple algorithms
 export const checkPasswordStrength = async (req: Request, res: Response) => {
   try {
     const { password } = req.body;
@@ -76,16 +80,24 @@ export const checkPasswordStrength = async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Password is required' });
     }
 
+    // Use zxcvbn for advanced password strength analysis
     const result = zxcvbn(password);
+
+    // Calculate additional metrics
     const length = password.length;
     const hasUpperCase = /[A-Z]/.test(password);
     const hasLowerCase = /[a-z]/.test(password);
     const hasNumbers = /[0-9]/.test(password);
     const hasSpecialChars = /[^A-Za-z0-9]/.test(password);
+    
+    // Calculate character diversity
     const uniqueChars = new Set(password).size;
     const charDiversity = (uniqueChars / length) * 100;
+
+    // Calculate entropy
     const entropy = calculateEntropy(password);
 
+    // Determine overall strength
     let strength: 'very-weak' | 'weak' | 'medium' | 'strong' | 'very-strong';
     let score = result.score;
 
@@ -128,10 +140,12 @@ export const checkPasswordStrength = async (req: Request, res: Response) => {
 
     res.json(analysis);
   } catch (error) {
+    console.error('Error checking password strength:', error);
     res.status(500).json({ error: 'Failed to check password strength' });
   }
 };
 
+// Detailed password analysis
 export const analyzePassword = async (req: Request, res: Response) => {
   try {
     const { password } = req.body;
@@ -160,10 +174,12 @@ export const analyzePassword = async (req: Request, res: Response) => {
 
     res.json(analysis);
   } catch (error) {
+    console.error('Error analyzing password:', error);
     res.status(500).json({ error: 'Failed to analyze password' });
   }
 };
 
+// Calculate password entropy
 function calculateEntropy(password: string): number {
   let charsetSize = 0;
   
@@ -175,6 +191,7 @@ function calculateEntropy(password: string): number {
   return password.length * Math.log2(charsetSize);
 }
 
+// Estimate crack time
 function estimateCrackTime(password: string): string {
   const entropy = calculateEntropy(password);
   const guessesPerSecond = 1e10; // 10 billion guesses per second
