@@ -44,7 +44,17 @@
 - **Lucide React** - Icons
 - **React Hot Toast** - Notifications
 
-## 🚀 Cài đặt và chạy
+## 🚀 Deployment
+
+### Production
+- **Frontend**: Deploy trên [Vercel](https://vercel.com) - Chi tiết trong [DEPLOYMENT.md](./DEPLOYMENT.md)
+- **Backend**: Deploy trên [Railway](https://railway.app) - Chi tiết trong [DEPLOYMENT.md](./DEPLOYMENT.md)
+
+### Live Demo
+- 🌐 **Website**: [Coming soon]
+- 🔌 **API**: [Coming soon]
+
+## 💻 Development - Cài đặt và chạy
 
 ### Yêu cầu
 - Node.js >= 18.x
