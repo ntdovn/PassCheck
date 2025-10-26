@@ -242,6 +242,4 @@ MIT License - xem file LICENSE để biết thêm chi tiết
 
 ---
 
-**Made with ❤️ and ☕ by Carter Fill**
-
 © 2025 Carter Fill. All Rights Reserved.
