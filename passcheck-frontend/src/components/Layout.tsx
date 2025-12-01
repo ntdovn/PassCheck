@@ -89,7 +89,7 @@ const Layout = ({ children }: LayoutProps) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center text-white">
             <p className="text-sm font-bold">
-              © 2025 PassCheck - Created by CTex Group
+              © 2025 PassCheck - Created by CTex Team
             </p>
             <p className="text-xs mt-2 text-white/70">
               Bảo mật thông tin của bạn là ưu tiên hàng đầu
